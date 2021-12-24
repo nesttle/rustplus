@@ -154,3 +154,10 @@ def translate_id_to_stack(id : int) -> str:
         "2048317869" : "Wolf Skull",
         "-151838493" : "Wood"
     }[str(id)]
+
+
+class ErrorChecker:
+    
+    async def check(self, message) -> None:
+        if message.response.error.error != "":
+            raise ValueError("An Error has been returned: {}".format(str(message.response.error.error)))
