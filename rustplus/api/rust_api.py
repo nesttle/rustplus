@@ -185,6 +185,8 @@ class RustSocket(BaseRustSocket):
         await self.ws.send_message(app_request)
 
         app_message = await self.ws.get_response(app_request.seq)
+        
+        await ErrorChecker().check(app_message)
 
         return RustEntityInfo(app_message.response.entityInfo)
 
